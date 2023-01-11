@@ -1,0 +1,6 @@
+apiVersion: extensions.practice.com/v1 #
+kind: Tester
+metadata:
+  name: mytester
+spec:
+  version: "test"
