@@ -4,7 +4,7 @@ import "k8s.io/apimachinery/pkg/runtime"
 
 const (
 	TesterGroup = "extensions.practice.com"
-	TesterVersion
+	TesterVersion = "v1"
 )
 
 var SchemeBuilder = &Builder{}

@@ -1,6 +1,7 @@
-package k8sconfig
+package type_object
 
 import (
+	"golanglearning/new_project/crd_practice/pkg/k8sconfig"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -13,9 +14,9 @@ type TesterSpec struct {
 }
 
 type Tester struct {
-	metav1.TypeMeta `json:",inline"`
+	metav1.TypeMeta   `json:",inline"`
  	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec TesterSpec `json:"spec,omitempty"`
+	Spec              TesterSpec `json:"spec,omitempty"`
 }
 
 
@@ -27,10 +28,10 @@ type TesterList struct {
 
 func init() {
 	// 自定义crd资源注册到Scheme
-	SchemeBuilder.Register(func(scheme *runtime.Scheme) error {
+	k8sconfig.SchemeBuilder.Register(func(scheme *runtime.Scheme) error {
 		gv := schema.GroupVersion{
-			Group: TesterGroup,
-			Version: TesterVersion,
+			Group:   k8sconfig.TesterGroup,
+			Version: k8sconfig.TesterVersion,
 		}
 		scheme.AddKnownTypes(gv, &Tester{}, &TesterList{})
 		metav1.AddToGroupVersion(scheme, gv)

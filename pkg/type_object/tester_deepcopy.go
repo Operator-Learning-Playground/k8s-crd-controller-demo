@@ -1,4 +1,4 @@
-package k8sconfig
+package type_object
 
 import "k8s.io/apimachinery/pkg/runtime"
 

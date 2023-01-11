@@ -1,18 +1,20 @@
 package main
 
 import (
+	"golanglearning/new_project/crd_practice/pkg/controller"
 	"golanglearning/new_project/crd_practice/pkg/k8sconfig"
+	"golanglearning/new_project/crd_practice/pkg/type_object"
+	"os"
 	"sigs.k8s.io/controller-runtime/pkg/builder"
+	logf "sigs.k8s.io/controller-runtime/pkg/log"
+	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"sigs.k8s.io/controller-runtime/pkg/manager"
 	"sigs.k8s.io/controller-runtime/pkg/manager/signals"
-	"sigs.k8s.io/controller-runtime/pkg/log/zap"
-	logf "sigs.k8s.io/controller-runtime/pkg/log"
-	"os"
 )
 
 func main() {
 	logf.SetLogger(zap.New())
-	var logs = logf.Log.WithName("crdPractice")
+	var logs = logf.Log.WithName("crdpractice")
 
 	// 初始化manager
 	mgr, err := manager.New(k8sconfig.K8sRestConfig(), manager.Options{})
@@ -30,7 +32,7 @@ func main() {
 
 	// 控制器
 	err = builder.ControllerManagedBy(mgr).
-		For(&k8sconfig.Tester{}).Complete(k8sconfig.NewCrdPracticeController())
+		For(&type_object.Tester{}).Complete(controller.NewCrdPracticeController())
 
 	if err != nil {
 		logs.Error(err, "unable to create manager")
