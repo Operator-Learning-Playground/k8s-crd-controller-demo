@@ -26,12 +26,17 @@ type TesterList struct {
 	Items []Tester `json:"items,omitempty"`
 }
 
+const (
+	TesterGroup = "extensions.practice.com"
+	TesterVersion = "v1"
+)
+
 func init() {
 	// 自定义crd资源注册到Scheme
 	k8sconfig.SchemeBuilder.Register(func(scheme *runtime.Scheme) error {
 		gv := schema.GroupVersion{
-			Group:   k8sconfig.TesterGroup,
-			Version: k8sconfig.TesterVersion,
+			Group:   TesterGroup,
+			Version: TesterVersion,
 		}
 		scheme.AddKnownTypes(gv, &Tester{}, &TesterList{})
 		metav1.AddToGroupVersion(scheme, gv)

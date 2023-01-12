@@ -2,10 +2,6 @@ package k8sconfig
 
 import "k8s.io/apimachinery/pkg/runtime"
 
-const (
-	TesterGroup = "extensions.practice.com"
-	TesterVersion = "v1"
-)
 
 var SchemeBuilder = &Builder{}
 

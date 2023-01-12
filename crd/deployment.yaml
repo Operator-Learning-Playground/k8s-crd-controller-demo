@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mycrd-controller
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mycrd-controller
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mycrd-controller
+    spec:
+      nodeName: vm-0-12-centos # 只调度到这个节点上
+      serviceAccountName: mycrd-sa # 配置service account
+      containers:
+        - name: mycrd
+          image: alpine:3.12
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: "Release"
+              value: "1"
+          workingDir: "/app"
+          command: ["./myoperator"]
+          volumeMounts:
+            - name: app
+              mountPath: /app
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: app
+          hostPath:
+            path: /root/k8s-operator-tester
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mycrd-svc
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 32110
+  selector:
+    app: mycrd-controller
+---

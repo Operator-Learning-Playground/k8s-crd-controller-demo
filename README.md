@@ -32,3 +32,5 @@
 ```
 
 ### 项目启动
+
+docker run --rm -it -v /root/k8s-operator-tester:/app -w /app -e GOPROXY=https://goproxy.cn -e CGO_ENABLED=0  golang:1.18.7-alpine3.15 go build -o ./myoperator .

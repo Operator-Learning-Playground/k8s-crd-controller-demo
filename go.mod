@@ -1,10 +1,11 @@
 module golanglearning/new_project/crd_practice
 
-go 1.18
+go 1.17
 
 require (
 	k8s.io/apimachinery v0.26.0
 	k8s.io/client-go v0.26.0
+	k8s.io/klog/v2 v2.80.1
 	sigs.k8s.io/controller-runtime v0.14.0
 )
 
@@ -59,7 +60,6 @@ require (
 	k8s.io/api v0.26.0 // indirect
 	k8s.io/apiextensions-apiserver v0.26.0 // indirect
 	k8s.io/component-base v0.26.0 // indirect
-	k8s.io/klog/v2 v2.80.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280 // indirect
 	k8s.io/utils v0.0.0-20221128185143-99ec85e7a448 // indirect
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
