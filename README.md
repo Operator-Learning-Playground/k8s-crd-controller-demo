@@ -7,9 +7,10 @@
 
 因此本项目采用半手写的方式创建控制器，藉由controller-runtime包提供的功能搭建自定义资源的控制器。
 
+### 项目目录
 ```
 ├── README.md
-├── crd # crd资源的yaml
+├── crd
 │   ├── crd-test.yaml
 │   └── crd.yaml
 ├── go.mod
@@ -18,13 +19,16 @@
 ├── pkg
 │   ├── common
 │   │   └── common.go
-│   └── k8sconfig
-│       ├── SchemeBuilder.go
-│       ├── controller.go
-│       ├── initConfig.go
+│   ├── controller
+│   │   └── controller.go # 自定义控制器逻辑
+│   ├── k8sconfig # client init
+│   │   ├── SchemeBuilder.go
+│   │   └── initConfig.go
+│   └── type_object # 定义资源对象
 │       ├── tester_deepcopy.go
 │       └── tester_types.go
 └── resource
     └── config
-
 ```
+
+### 项目启动
