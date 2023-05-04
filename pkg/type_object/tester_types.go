@@ -15,19 +15,18 @@ type TesterSpec struct {
 
 type Tester struct {
 	metav1.TypeMeta   `json:",inline"`
- 	metav1.ObjectMeta `json:"metadata,omitempty"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              TesterSpec `json:"spec,omitempty"`
 }
-
 
 type TesterList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items []Tester `json:"items,omitempty"`
+	Items           []Tester `json:"items,omitempty"`
 }
 
 const (
-	TesterGroup = "extensions.practice.com"
+	TesterGroup   = "extensions.practice.com"
 	TesterVersion = "v1"
 )
 

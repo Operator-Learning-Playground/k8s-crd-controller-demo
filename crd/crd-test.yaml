@@ -1,4 +1,4 @@
-apiVersion: extensions.practice.com/v1 #
+apiVersion: extensions.practice.com/v1
 kind: Tester
 metadata:
   name: mytester
